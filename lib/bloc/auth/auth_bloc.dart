@@ -1,3 +1,5 @@
+import 'package:blood_donation_app/data/models/user.dart';
+import 'package:blood_donation_app/data/request/sign_in_form_model.dart';
 import 'package:blood_donation_app/data/request/sign_up_form_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:blood_donation_app/data/services/auth_service.dart';
@@ -72,6 +74,42 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           emit(AuthLoading());
           await AuthService().registerUsers(event.data);
           emit(AuthRegisterSuccess());
+        } catch (e) {
+          emit(AuthFailure(e.toString()));
+        }
+      }
+
+      // Login User
+      if (event is AuthLogin) {
+        try {
+          emit(AuthLoading());
+          final user = await AuthService().loginUsers(event.data);
+          emit(AuthSuccess(user));
+        } catch (e) {
+          emit(AuthFailure(e.toString()));
+        }
+      }
+
+      // Get current credential
+      if (event is AuthGetCurrentUser) {
+        try {
+          emit(AuthLoading());
+
+          final SignInForm data = await AuthService().getCredentialFromLocal();
+          final User user = await AuthService().loginUsers(data);
+
+          emit(AuthSuccess(user));
+        } catch (e) {
+          emit(AuthFailure(e.toString()));
+        }
+      }
+
+      // Logout User
+      if (event is AuthLogout) {
+        try {
+          emit(AuthLoading());
+          await AuthService().logout();
+          emit(AuthInitial());
         } catch (e) {
           emit(AuthFailure(e.toString()));
         }

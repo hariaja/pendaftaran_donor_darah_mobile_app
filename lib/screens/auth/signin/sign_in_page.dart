@@ -1,9 +1,14 @@
+import 'package:blood_donation_app/bloc/auth/auth_bloc.dart';
+import 'package:blood_donation_app/data/request/sign_in_form_model.dart';
 import 'package:blood_donation_app/themes/theme.dart';
+import 'package:blood_donation_app/utils/method.dart';
 import 'package:blood_donation_app/values/string.dart';
 import 'package:blood_donation_app/widgets/button_action.dart';
+import 'package:blood_donation_app/widgets/button_loading.dart';
 import 'package:blood_donation_app/widgets/footer_auth.dart';
 import 'package:blood_donation_app/widgets/form_input.dart';
 import 'package:blood_donation_app/widgets/header_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:flutter/material.dart';
 
@@ -84,8 +89,41 @@ class _SignInPageState extends State<SignInPage> {
                 const SizedBox(
                   height: 40,
                 ),
-                const ButtonAction(
-                  title: 'Masuk Aplikasi',
+                BlocConsumer<AuthBloc, AuthState>(
+                  listener: (context, state) {
+                    if (state is AuthFailure) {
+                      errorSnackbar(context, state.e);
+                    }
+
+                    if (state is AuthSuccess) {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        '/home',
+                        (route) => false,
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    if (state is AuthLoading) {
+                      return const ButtonLoading();
+                    }
+
+                    return ButtonAction(
+                      title: 'Masuk Aplikasi',
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          context.read<AuthBloc>().add(
+                                AuthLogin(
+                                  SignInForm(
+                                    email: _emailController.text,
+                                    password: _passwordController.text,
+                                  ),
+                                ),
+                              );
+                        }
+                      },
+                    );
+                  },
                 ),
                 const Spacer(),
                 FooterAuth(

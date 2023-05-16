@@ -1,6 +1,7 @@
 import 'package:blood_donation_app/bloc/auth/auth_bloc.dart';
 import 'package:blood_donation_app/screens/auth/signin/sign_in_page.dart';
 import 'package:blood_donation_app/screens/auth/signup/sign_up_page_one.dart';
+import 'package:blood_donation_app/screens/home/main_page.dart';
 import 'package:blood_donation_app/screens/splash/splash_page.dart';
 import 'package:blood_donation_app/themes/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(),
+          create: (context) => AuthBloc()..add(AuthGetCurrentUser()),
         ),
       ],
       child: MaterialApp(
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => const SplashPage(),
+          '/home': (context) => const MainPage(),
           '/sign-in': (context) => const SignInPage(),
           '/sign-up-one': (context) => const SignUpPageOne(),
         },
