@@ -188,9 +188,9 @@ class _SignUpPageTwoState extends State<SignUpPageTwo> {
                           fontSize: 14,
                         ),
                         suffixIcon: IconButton(
-                          icon: const Icon(
-                            Icons.calendar_today_rounded,
-                            size: 18,
+                          icon: Image.asset(
+                            width: 18,
+                            'assets/icons/ic_calendar.png',
                           ),
                           color: primaryColor,
                           onPressed: () => _selectDate(context),

@@ -7,6 +7,7 @@ double defaultMargin = 30.0;
 // Color schema
 Color primaryColor = const Color(0xffE91E63);
 Color secondaryColor = const Color(0xff03A9F4);
+Color primaryLightColor = const Color(0xffFCE4EC);
 
 // Alert schema
 Color successColor = const Color(0xff4CAF50);

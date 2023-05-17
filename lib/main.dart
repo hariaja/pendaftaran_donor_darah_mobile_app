@@ -1,7 +1,10 @@
 import 'package:blood_donation_app/bloc/auth/auth_bloc.dart';
+import 'package:blood_donation_app/bloc/registrations/registration_bloc.dart';
+import 'package:blood_donation_app/bloc/users/user_bloc.dart';
 import 'package:blood_donation_app/screens/auth/signin/sign_in_page.dart';
 import 'package:blood_donation_app/screens/auth/signup/sign_up_page_one.dart';
 import 'package:blood_donation_app/screens/home/main_page.dart';
+import 'package:blood_donation_app/screens/registrations/store_registration_page.dart';
 import 'package:blood_donation_app/screens/splash/splash_page.dart';
 import 'package:blood_donation_app/themes/theme.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +22,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthBloc()..add(AuthGetCurrentUser()),
         ),
+        BlocProvider(
+          create: (context) => UserBloc()..add(UserCurrentLogin()),
+        ),
+        BlocProvider(
+          create: (context) => RegistrationBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -30,6 +39,7 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const MainPage(),
           '/sign-in': (context) => const SignInPage(),
           '/sign-up-one': (context) => const SignUpPageOne(),
+          '/store-registration': (context) => const StoreRegistrationPage(),
         },
       ),
     );

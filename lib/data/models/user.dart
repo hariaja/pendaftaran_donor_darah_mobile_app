@@ -9,6 +9,9 @@ class User {
   final String? phone;
   final String? emailVerifiedAt;
   final String? avatar;
+  final bool? hasAvatar;
+  final String? avatarUrl;
+  final String? birthDate;
   final String? accessToken;
   final String? refreshToken;
   final Donor? donor;
@@ -22,6 +25,9 @@ class User {
     this.phone,
     this.emailVerifiedAt,
     this.avatar,
+    this.hasAvatar,
+    this.avatarUrl,
+    this.birthDate,
     this.accessToken,
     this.refreshToken,
     this.donor,
@@ -35,6 +41,9 @@ class User {
         phone: json['phone'],
         emailVerifiedAt: json['email_verified_at'],
         avatar: json['avatar'],
+        hasAvatar: json['has_avatar'],
+        avatarUrl: json['avatar_url'],
+        birthDate: json['birth_date'],
         accessToken: json['access_token'],
         refreshToken: json['refresh_token'],
         donor: Donor.fromJson(json['donor']),
@@ -49,6 +58,7 @@ class User {
     String? phone,
     String? emailVerifiedAt,
     String? avatar,
+    String? avatarUrl,
     Donor? donor,
   }) =>
       User(
@@ -58,6 +68,9 @@ class User {
         phone: phone ?? this.phone,
         emailVerifiedAt: emailVerifiedAt ?? this.emailVerifiedAt,
         avatar: avatar ?? this.avatar,
+        avatarUrl: avatarUrl ?? this.avatarUrl,
+        hasAvatar: hasAvatar,
+        birthDate: birthDate,
         accessToken: accessToken,
         refreshToken: refreshToken,
         donor: donor ?? this.donor,
