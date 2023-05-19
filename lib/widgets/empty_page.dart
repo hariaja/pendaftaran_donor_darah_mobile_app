@@ -24,6 +24,7 @@ class EmptyPage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         color: lightText,
+        padding: EdgeInsets.all(defaultMargin),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -37,8 +38,8 @@ class EmptyPage extends StatelessWidget {
             Text(
               title,
               style: darkTextStyle.copyWith(
-                fontSize: 20,
-                fontWeight: semiBold,
+                fontSize: 16,
+                fontWeight: medium,
               ),
               textAlign: TextAlign.center,
             ),
@@ -47,9 +48,7 @@ class EmptyPage extends StatelessWidget {
             ),
             Text(
               subtitle,
-              style: secondaryTextStyle.copyWith(
-                fontSize: 16,
-              ),
+              style: secondaryTextStyle,
               textAlign: TextAlign.center,
             ),
             const SizedBox(

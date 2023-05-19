@@ -19,4 +19,12 @@ class RegsitrationFailure extends RegistrationState {
   List<Object> get props => [e];
 }
 
+class RegistrationIndexSuccess extends RegistrationState {
+  final List<Registration> registrations;
+  const RegistrationIndexSuccess(this.registrations);
+
+  @override
+  List<Object> get props => [registrations];
+}
+
 class RegsitrationStoreSuccess extends RegistrationState {}

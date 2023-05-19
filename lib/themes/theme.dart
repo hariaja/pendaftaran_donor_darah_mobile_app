@@ -26,6 +26,8 @@ Color formLight = const Color(0xffECF0F1);
 TextStyle darkTextStyle = GoogleFonts.poppins(color: darkText);
 TextStyle lightTextStyle = GoogleFonts.poppins(color: lightText);
 TextStyle secondaryTextStyle = GoogleFonts.poppins(color: grayText);
+TextStyle blueTextStyle = GoogleFonts.poppins(color: secondaryColor);
+TextStyle greenTextStyle = GoogleFonts.poppins(color: successColor);
 TextStyle primaryTextStyle = GoogleFonts.poppins(color: primaryColor);
 TextStyle splashTextStyle = GoogleFonts.comfortaa(color: lightText);
 

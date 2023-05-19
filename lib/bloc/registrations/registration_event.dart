@@ -7,6 +7,8 @@ abstract class RegistrationEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class RegistrationIndex extends RegistrationEvent {}
+
 class RegistrationStore extends RegistrationEvent {
   final RegistrationStoreForm data;
   const RegistrationStore(this.data);

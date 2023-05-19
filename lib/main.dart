@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           create: (context) => UserBloc()..add(UserCurrentLogin()),
         ),
         BlocProvider(
-          create: (context) => RegistrationBloc(),
+          create: (context) => RegistrationBloc()..add(RegistrationIndex()),
         ),
       ],
       child: MaterialApp(

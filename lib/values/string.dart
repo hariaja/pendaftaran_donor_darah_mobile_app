@@ -1,5 +1,5 @@
-String baseUrl = 'http://192.168.100.203/blood-donation-app/public/api';
-String baseStorage = 'http://192.168.100.203/blood-donation-app/public';
+String baseUrl = 'http://192.168.0.115/blood-donation-app/public/api';
+String baseStorage = 'http://192.168.0.115/blood-donation-app/public';
 
 const String male = 'Laki - Laki';
 const String female = 'Perempuan';
